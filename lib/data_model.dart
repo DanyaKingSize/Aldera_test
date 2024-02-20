@@ -1,4 +1,5 @@
 class DataModel {
+  final String type;
   final String title;
   final String subTitle;
   final String image;
@@ -8,6 +9,7 @@ class DataModel {
   final List<String>? keyWord;
 
   DataModel({
+    required this.type,
     required this.title,
     required this.center,
     required this.date,

@@ -97,6 +97,58 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.check_rounded,
+                  color: Colors.green,
+                ),
+                label: const Text('Images'),
+                style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.deepPurple),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                ),
+              ),
+              GestureDetector(
+                onTap: ()=>print('Video tap'),
+                child:
+                Container(
+                  height: 40,
+                  width: 130,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(100),
+                    ),
+                    color: Colors.white,
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.check_rounded,
+                        color: Colors.green,
+                      ),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 20),
+                          child:
+                          Text(
+                            'Video',
+                            style: TextStyle(
+                                color: Colors.deepPurple,
+                                fontSize: 15
+                            ),
+                          )
+                      ),
+
+                    ],
+                  ),
+                ),
+              ),
+            ],
+      ),
           Expanded(
             child: BlocBuilder<MyBloc, UserState>(
               builder: (context, state) {

@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:test_app/data_model.dart';
 
+
 String buildUrl(String userRequest) {
   return 'https://images-api.nasa.gov/search?q=$userRequest&media_type=image';
 }
@@ -44,6 +45,7 @@ class MyBloc extends Bloc<UserEvent, UserState> {
               keyWord: (item['data'][0]['keywords'] as List<dynamic>? ?? [])
                   .cast<String>(),
               subTitle: item['data'][0]['description'],
+              type: item['data'][0]['media_type'],
             ),
           );
         }
