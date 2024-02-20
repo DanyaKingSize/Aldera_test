@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/my_list_view.dart';
 import 'my_bloc.dart';
+import 'my_button.dart';
 
 const textFont = 20;
 
@@ -97,58 +98,31 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton.icon(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.check_rounded,
-                  color: Colors.green,
-                ),
-                label: const Text('Images'),
-                style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.deepPurple),
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white),
-                ),
-              ),
-              GestureDetector(
-                onTap: ()=>print('Video tap'),
-                child:
-                Container(
-                  height: 40,
-                  width: 130,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(100),
-                    ),
-                    color: Colors.white,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MyButton(
+                    name: 'audio',
+                    onTap: () => print('Tap audio'),
                   ),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(Icons.check_rounded,
-                        color: Colors.green,
-                      ),
-                      Padding(padding: EdgeInsets.symmetric(horizontal: 20),
-                          child:
-                          Text(
-                            'Video',
-                            style: TextStyle(
-                                color: Colors.deepPurple,
-                                fontSize: 15
-                            ),
-                          )
-                      ),
-
-                    ],
+                  const SizedBox(width: 5),
+                  MyButton(
+                    name: 'Image',
+                    onTap: () => print('Tap image'),
                   ),
-                ),
+                  const SizedBox(width: 5),
+                  MyButton(
+                    name: 'Video',
+                    onTap: () => print('Tap Video'),
+                  ),
+                ],
               ),
-            ],
-      ),
+            ),
+          ),
           Expanded(
             child: BlocBuilder<MyBloc, UserState>(
               builder: (context, state) {
