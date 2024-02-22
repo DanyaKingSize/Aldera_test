@@ -4,8 +4,6 @@ import 'package:test_app/my_list_view.dart';
 import 'my_bloc.dart';
 import 'my_button.dart';
 
-const textFont = 20;
-
 void main() {
   runApp(const MyApp());
 }
@@ -43,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white12,
+      backgroundColor: const Color.fromRGBO(31, 31, 31, 1),
       appBar: AppBar(
         flexibleSpace: Image.asset(
           'assets/appBar.png',
@@ -102,31 +100,27 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  MyButton(
-                    name: 'audio',
-                    onTap: () => print( 'afdsfsdfdsudio'),
-                  ),
-                  const SizedBox(width: 5),
-                  MyButton(
-                    name: 'Image',
-                    onTap: () => print('Tap image'),
-                  ),
-                  const SizedBox(width: 5),
-                  MyButton(
-                    name: 'Video',
-                    onTap: () => print('Tap Video'),
-                  ),
-                ],
-              ),
+              child: BlocBuilder<MyBloc, UserState>(builder: (context, state) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    for (final type in ContentType.values)
+                      MyButton(
+                        name: type.value,
+                        onTap: () {
+                          context.read<MyBloc>().add(SelectContentType(type));
+                        },
+                        isActive: state.currentContentType == type,
+                      )
+                  ],
+                );
+              }),
             ),
           ),
           Expanded(
             child: BlocBuilder<MyBloc, UserState>(
               builder: (context, state) {
-                if (state is Loading) {
+                if (state.isLoading) {
                   return const Center(
                     child: SizedBox(
                       width: 50,
@@ -135,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   );
                 }
-                if (state is Success) {
+                if (!state.isLoading) {
                   return MyListView(data: state.data);
                 }
                 return const SizedBox.shrink();

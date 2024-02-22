@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
   final String name;
+  final bool isActive;
   final void Function() onTap;
 
-  const MyButton({super.key, required this.name, required this.onTap});
+  const MyButton(
+      {super.key,
+      required this.name,
+      required this.onTap,
+      required this.isActive});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        onTap();
-      },
+      onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular(100),
@@ -23,16 +26,22 @@ class MyButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Icon(
-              Icons.check_rounded,
-              color: Colors.green,
-            ),
+            isActive ?
+              const Icon(
+                Icons.check_rounded,
+                color: Colors.green,
+              ) : const Icon(
+                Icons.close,
+                color: Colors.green,
+              ),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   name,
-                  style:
-                      const TextStyle(color: Colors.deepPurple, fontSize: 15),
+                  style: const TextStyle(
+                    color: Colors.deepPurple,
+                    fontSize: 15,
+                  ),
                 )),
           ],
         ),

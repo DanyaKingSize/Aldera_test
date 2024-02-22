@@ -3,12 +3,11 @@ import 'package:test_app/data_model.dart';
 import 'package:video_player_media_kit/video_player_media_kit.dart';
 import 'detail_screen.dart';
 
-enum ContentType { image, video, audio }
-
 class MyListView extends StatelessWidget {
   const MyListView({super.key, required this.data});
 
   final List<DataModel> data;
+
 
   @override
   Widget build(BuildContext context) {

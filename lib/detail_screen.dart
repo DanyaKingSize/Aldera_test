@@ -9,9 +9,9 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white12,
+      backgroundColor: const Color.fromRGBO(31, 31, 31, 1),
       appBar: AppBar(
-        backgroundColor: Colors.white12,
+        backgroundColor: const Color.fromRGBO(31, 31, 31, 1),
         iconTheme: const IconThemeData(
           color: Colors.yellow,
           size: 30,
