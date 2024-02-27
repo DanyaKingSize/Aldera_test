@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/data_model.dart';
+import 'package:test_app/my_bloc.dart';
 import 'package:video_player_media_kit/video_player_media_kit.dart';
 import 'detail_screen.dart';
+import 'video_playeer_screen.dart';
 
 class MyListView extends StatelessWidget {
   const MyListView({super.key, required this.data});
 
   final List<DataModel> data;
-
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,15 @@ class MyListView extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailScreen(data[index]),
+                  builder: (context) {
+                    if (data[index].type == 'image') {
+                      return DetailScreen(data[index]);
+                    } else if (data[index].type == 'video') {
+                      return VideoPlayerScreen(data[index]);
+                    } else {
+                      throw Exception('listView Error media type');
+                    }
+                  },
                 ),
               );
             },

@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:media_kit/media_kit.dart';
+import 'package:test_app/api_request_service.dart';
 import 'package:test_app/my_list_view.dart';
+import 'package:test_app/repository.dart';
+import 'package:video_player_media_kit/video_player_media_kit.dart';
 import 'my_bloc.dart';
 import 'my_button.dart';
 
+
+
+
 void main() {
+  MediaKit.ensureInitialized();
+  // VideoPlayerMediaKit.ensureInitialized(
+  //   android: true,
+  // );
+
   runApp(const MyApp());
 }
 
@@ -13,8 +25,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MyBloc()..add(UserRequest()),
+    return MultiBlocProvider(
+      providers: [
+        RepositoryProvider(
+          create: (context) => RequestService(),
+        ),
+        RepositoryProvider(
+          create: (context) => Repository(context.read()),
+        ),
+        BlocProvider(
+          create: (context) => MyBloc(context.read())..add(UserRequest()),
+        ),
+
+      ],
       child: MaterialApp(
         theme: ThemeData(
           useMaterial3: true,
@@ -104,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    for (final type in ContentType.values)
+                    for (final type in MyContentType.values)
                       MyButton(
                         name: type.value,
                         onTap: () {
