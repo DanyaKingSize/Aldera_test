@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           create: (context) => Repository(context.read()),
         ),
         BlocProvider(
-          create: (context) => MyBloc(context.read())..add(UserRequest()),
+          create: (context) => MyBloc(context.read<Repository>())..add(UserRequest()),
         ),
 
       ],

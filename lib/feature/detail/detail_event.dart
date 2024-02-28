@@ -4,6 +4,10 @@ abstract class DetailScreenEvent {
   const DetailScreenEvent();
 }
 
-class DetailEvent extends DetailScreenEvent{
+class GetLinkDetailEvent extends DetailScreenEvent {
+  final String nasaId;
+  GetLinkDetailEvent(this.nasaId);
+
+
 
 }

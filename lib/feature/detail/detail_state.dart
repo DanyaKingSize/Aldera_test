@@ -1,9 +1,24 @@
 part of 'detail_bloc.dart';
-/*
-abstract class DetailScreenState {
-  const DetailScreenState();
+
+abstract class DetailState {
+  const DetailState();
 }
-*/
+
+class IdleDetailState extends DetailState {
+  IdleDetailState();
+}
+
+class LoadingDetailState extends DetailState {
+  LoadingDetailState();
+}
+
+class SuccessDetailState extends DetailState {
+  final String sourceLink;
+
+  SuccessDetailState(this.sourceLink);
+}
+
+/*
 class DetailScreenState extends Equatable {
   final List<DataModel> data;
   final bool isLoading;
@@ -30,3 +45,4 @@ class DetailScreenState extends Equatable {
 
 }
 
+ */

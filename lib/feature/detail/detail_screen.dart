@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'data_model.dart';
+import '../../data_model.dart';
 
 class DetailScreen extends StatelessWidget {
   final DataModel data;
