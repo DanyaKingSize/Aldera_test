@@ -40,7 +40,7 @@ class Repository {
           videoLink: '',
         ),
       );
-      if(urls.last.type=='video'){
+      if (urls.last.type == 'video') {
         urls.last.videoLink = getVideoLink(nasaId: urls.last.id) as String;
       }
     }

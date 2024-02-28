@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/data_model.dart';
-import 'detail_screen.dart';
-import 'video_playeer_screen.dart';
+import 'package:test_app/feature/detail/detail_bloc.dart';
+import 'package:test_app/repository.dart';
+import 'feature/detail/detail_screen.dart';
 
 class MyListView extends StatelessWidget {
   const MyListView({super.key, required this.data});
@@ -25,7 +27,14 @@ class MyListView extends StatelessWidget {
                     if (data[index].type == 'image') {
                       return DetailScreen(data[index]);
                     } else if (data[index].type == 'video') {
-                      return VideoPlayerScreen(data[index]);
+                      return BlocProvider(
+                        create: (context) => DetailBloc(
+                          context.read<Repository>(),
+                        )..add(
+                            GetLinkDetailEvent(data[index].id),
+                          ),
+                      );
+                      // return VideoPlayerScreen(data[index]);
                     } else {
                       throw Exception('listView Error media type');
                     }

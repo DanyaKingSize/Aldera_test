@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/data_model.dart';
 import 'repository.dart';
+import 'data_model.dart';
 
 enum MyContentType {
   image('image'),
