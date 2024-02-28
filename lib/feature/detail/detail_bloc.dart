@@ -13,7 +13,7 @@ class DetailBloc extends Bloc<DetailScreenEvent, DetailState> {
   DetailBloc(this._repository,) : super(IdleDetailState()) {
     on<GetLinkDetailEvent>((event,emit)async{
       emit(LoadingDetailState());
-     String mediaLink = await _repository.getVideoLink(nasaId: event.data.id);
+     String mediaLink = await _repository.getVideoLink(nasaId: event.nasaId);
      emit(SuccessDetailState(mediaLink));
     }
     );
