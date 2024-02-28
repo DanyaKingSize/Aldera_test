@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'data_model.dart';
 import 'package:media_kit/media_kit.dart';
-
 import 'package:media_kit_video/media_kit_video.dart';
+import 'data_model.dart';
+
 
 class VideoPlayerScreen extends StatefulWidget {
   final DataModel data;
 
+  // final Repository _repository;
+
   const VideoPlayerScreen(this.data, {super.key});
+
+  // const VideoPlayerScreen(this.data, this._repository, {super.key});
 
   @override
   State<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
@@ -17,12 +21,16 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   late final controller = VideoController(player);
   late final player = Player();
 
+  Future<String> getVideoLink() async {
+    // return  widget._repository.getVideoLink(nasaId: widget.data.id);
+    return '';
+  }
+
   @override
   void initState() {
     super.initState();
-    // Play a [Media] or [Playlist].
-    player.open(Media(
-        'http://images-assets.nasa.gov/video/GSFC_20181129_FERMI_m13104_Starlight/GSFC_20181129_FERMI_m13104_Starlight~mobile.mp4'));
+
+    player.open(Media(widget.data.videoLink));
   }
 
   @override

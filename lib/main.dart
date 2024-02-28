@@ -1,10 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:test_app/api_request_service.dart';
 import 'package:test_app/my_list_view.dart';
 import 'package:test_app/repository.dart';
-import 'package:video_player_media_kit/video_player_media_kit.dart';
 import 'my_bloc.dart';
 import 'my_button.dart';
 
@@ -27,8 +27,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        RepositoryProvider(create: (_) => Dio()),
         RepositoryProvider(
-          create: (context) => RequestService(),
+          create: (context) => RequestService(context.read()),
         ),
         RepositoryProvider(
           create: (context) => Repository(context.read()),

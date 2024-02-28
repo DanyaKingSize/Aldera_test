@@ -85,4 +85,11 @@ class MyBloc extends Bloc<UserEvent, UserState> {
       );
     });
   }
+
+
+
 }
+
+// class VideoBloc extends Bloc<UserEvent, UserState> {
+//
+// }

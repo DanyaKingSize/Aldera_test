@@ -1,4 +1,3 @@
-
 import 'api_request_service.dart';
 import 'data_model.dart';
 import 'my_bloc.dart';
@@ -8,6 +7,14 @@ class Repository {
 
   Repository(this._requestService);
 
+  Future<String> getVideoLink({
+    required String nasaId,
+  }) async {
+    final videoLink = await _requestService.getVideoLink(nasaId: nasaId);
+    String currentLink = videoLink['collection']['items'][0];
+    return currentLink;
+  }
+
   Future<List<DataModel>> getResponse({
     MyContentType contentType = MyContentType.image,
     required String userSearchQuery,
@@ -16,6 +23,7 @@ class Repository {
       userRequestQuery: userSearchQuery,
       contentType: contentType.value,
     );
+
     List<DataModel> urls = [];
     for (var item in response['collection']['items']) {
       urls.add(
@@ -32,6 +40,9 @@ class Repository {
           videoLink: '',
         ),
       );
+      if(urls.last.type=='video'){
+        urls.last.videoLink = getVideoLink(nasaId: urls.last.id) as String;
+      }
     }
     return urls;
   }

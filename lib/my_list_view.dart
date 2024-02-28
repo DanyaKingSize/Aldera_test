@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/data_model.dart';
-import 'package:test_app/my_bloc.dart';
-import 'package:video_player_media_kit/video_player_media_kit.dart';
 import 'detail_screen.dart';
 import 'video_playeer_screen.dart';
 
