@@ -39,7 +39,7 @@ class Repository {
           center: item['data'][0]['center'] ?? "",
           date: item['data'][0]['date_created'],
           id: item['data'][0]['nasa_id'],
-          image: item['links'][0]['href'],
+          image: item['links'] != null ? item['links'][0]['href'] : '',
           keyWord: (item['data'][0]['keywords'] as List<dynamic>? ?? [])
               .cast<String>(),
           subTitle: item['data'][0]['description'],

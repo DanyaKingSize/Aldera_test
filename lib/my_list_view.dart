@@ -13,7 +13,6 @@ class MyListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return ListView.builder(
       padding: const EdgeInsets.all(15),
       itemCount: data.length,
@@ -31,13 +30,12 @@ class MyListView extends StatelessWidget {
                       return DetailScreen(data[index]);
                     } else if (data[index].type == 'video') {
                       return BlocProvider(
-                        create: (context) => DetailBloc(
-                          context.read<Repository>(),
-                        )..add(
-                            GetLinkDetailEvent(data[index].id),
-                          ),
-                          child: VideoPlayerScreen(data[index])
-                      );
+                          create: (context) => DetailBloc(
+                                context.read<Repository>(),
+                              )..add(
+                                  GetLinkDetailEvent(data[index].id),
+                                ),
+                          child: VideoPlayerScreen(data[index]));
                     } else {
                       throw Exception('listView Error media type');
                     }
@@ -55,11 +53,17 @@ class MyListView extends StatelessWidget {
               child: Column(
                 children: [
                   Expanded(
-                    child:
-                    Image.network(
-                      data[index].image,
-                      fit: BoxFit.contain,
-                    ),
+                    child: data[index].image.isNotEmpty
+                        ? Image.network(
+                            data[index].image,
+                            fit: BoxFit.contain,
+                          )
+                        : const Center(
+                            child: Icon(Icons.headphones,
+                              size: 50,
+                              color: Colors.amberAccent,
+                            ),
+                          ),
                   ),
                   const SizedBox(
                     height: 10,
