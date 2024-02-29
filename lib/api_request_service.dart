@@ -17,6 +17,12 @@ class RequestService {
     return 'https://images-api.nasa.gov/asset/$nasaId';
   }
 
+  String buildUrlAudioLink(
+      String nasaId,
+      ) {
+    return 'https://images-api.nasa.gov/asset/$nasaId';
+  }
+
   Future<Map<String, dynamic>> getResponse(
       {required String userRequestQuery, required String contentType}) async {
     final Response<Map<String, Object?>> response =
@@ -39,4 +45,17 @@ class RequestService {
       throw Exception('Status code not 200');
     }
   }
+
+  Future<Map<String, dynamic>> getAudioLink({
+    required String nasaId,
+  }) async {
+    final Response<Map<String, Object?>> response =
+    await _dio.get(buildUrlVideoLink(nasaId));
+    if (response.statusCode == 200) {
+      return response.data ?? {};
+    } else {
+      throw Exception('Status code not 200');
+    }
+  }
+
 }

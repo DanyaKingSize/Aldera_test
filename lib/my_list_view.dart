@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/data_model.dart';
 import 'package:test_app/feature/detail/detail_bloc.dart';
 import 'package:test_app/repository.dart';
+import 'package:test_app/video_playeer_screen.dart';
 import 'feature/detail/detail_screen.dart';
 
 class MyListView extends StatelessWidget {
@@ -12,10 +13,12 @@ class MyListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return ListView.builder(
       padding: const EdgeInsets.all(15),
       itemCount: data.length,
       itemBuilder: (context, index) {
+        debugPrint(data[index].image);
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 5),
           child: GestureDetector(
@@ -33,8 +36,8 @@ class MyListView extends StatelessWidget {
                         )..add(
                             GetLinkDetailEvent(data[index].id),
                           ),
+                          child: VideoPlayerScreen(data[index])
                       );
-                      // return VideoPlayerScreen(data[index]);
                     } else {
                       throw Exception('listView Error media type');
                     }
@@ -52,7 +55,8 @@ class MyListView extends StatelessWidget {
               child: Column(
                 children: [
                   Expanded(
-                    child: Image.network(
+                    child:
+                    Image.network(
                       data[index].image,
                       fit: BoxFit.contain,
                     ),

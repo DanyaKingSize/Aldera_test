@@ -11,7 +11,15 @@ class Repository {
     required String nasaId,
   }) async {
     final videoLink = await _requestService.getVideoLink(nasaId: nasaId);
-    String currentLink = videoLink['collection']['items'][0];
+    String  currentLink = videoLink['collection']['items'][0]['href'];
+    return currentLink;
+  }
+
+  Future<String> getAudioLink({
+    required String userSearchQuery
+  }) async {
+    final response = await _requestService.getResponse(userRequestQuery: userSearchQuery, contentType: 'audio');
+    String  currentLink = response['collection']['items']['href'][0];
     return currentLink;
   }
 
@@ -23,7 +31,6 @@ class Repository {
       userRequestQuery: userSearchQuery,
       contentType: contentType.value,
     );
-
     List<DataModel> urls = [];
     for (var item in response['collection']['items']) {
       urls.add(
@@ -37,12 +44,8 @@ class Repository {
               .cast<String>(),
           subTitle: item['data'][0]['description'],
           type: item['data'][0]['media_type'],
-          videoLink: '',
         ),
       );
-      if (urls.last.type == 'video') {
-        urls.last.videoLink = getVideoLink(nasaId: urls.last.id) as String;
-      }
     }
     return urls;
   }

@@ -7,7 +7,7 @@ class DataModel {
   final String id;
   final String center;
   final List<String>? keyWord;
-  late final String videoLink;
+
 
 
   DataModel({
@@ -19,8 +19,6 @@ class DataModel {
     required this.image,
     required this.keyWord,
     required this.subTitle,
-    required this.videoLink,
-
 
   });
 }

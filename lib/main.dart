@@ -13,10 +13,6 @@ import 'my_button.dart';
 
 void main() {
   MediaKit.ensureInitialized();
-  // VideoPlayerMediaKit.ensureInitialized(
-  //   android: true,
-  // );
-
   runApp(const MyApp());
 }
 
