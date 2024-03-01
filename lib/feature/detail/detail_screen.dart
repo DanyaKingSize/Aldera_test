@@ -8,6 +8,7 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(data.mediaLink);
     return Scaffold(
       backgroundColor: const Color.fromRGBO(31, 31, 31, 1),
       appBar: AppBar(

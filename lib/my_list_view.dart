@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/data_model.dart';
@@ -36,6 +37,15 @@ class MyListView extends StatelessWidget {
                                   GetLinkDetailEvent(data[index].id),
                                 ),
                           child: VideoPlayerScreen(data[index]));
+                    } else if (data[index].type == 'audio') {
+                      return BlocProvider(
+                        create: (context) => DetailBloc(
+                          context.read<Repository>(),
+                        )..add(
+                            GetLinkAudioDetailEvent(),
+                          ),
+                        child: VideoPlayerScreen(data[index]),
+                      );
                     } else {
                       throw Exception('listView Error media type');
                     }
@@ -59,7 +69,8 @@ class MyListView extends StatelessWidget {
                             fit: BoxFit.contain,
                           )
                         : const Center(
-                            child: Icon(Icons.headphones,
+                            child: Icon(
+                              Icons.headphones,
                               size: 50,
                               color: Colors.amberAccent,
                             ),

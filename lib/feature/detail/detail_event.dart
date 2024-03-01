@@ -8,6 +8,8 @@ class GetLinkDetailEvent extends DetailScreenEvent {
   final String nasaId;
   GetLinkDetailEvent(this.nasaId);
 
+}
 
-
+class GetLinkAudioDetailEvent extends DetailScreenEvent {
+  GetLinkAudioDetailEvent();
 }

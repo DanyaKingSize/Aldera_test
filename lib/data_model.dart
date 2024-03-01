@@ -6,6 +6,7 @@ class DataModel {
   final String date;
   final String id;
   final String center;
+  final String mediaLink;
   final List<String>? keyWord;
 
 
@@ -19,6 +20,7 @@ class DataModel {
     required this.image,
     required this.keyWord,
     required this.subTitle,
+    required this.mediaLink,
 
   });
 }

@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 
+
 import '../../repository.dart';
 
 part 'detail_event.dart';
@@ -16,5 +17,15 @@ class DetailBloc extends Bloc<DetailScreenEvent, DetailState> {
      emit(SuccessDetailState(mediaLink));
     }
     );
+
+    on<GetLinkAudioDetailEvent>((event,emit){
+      emit(LoadingDetailState());
+      emit(SuccessAudioDetailState());
+    }
+    );
+
+
+
+
   }
 }

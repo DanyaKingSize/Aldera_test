@@ -14,7 +14,9 @@ class LoadingDetailState extends DetailState {
 
 class SuccessDetailState extends DetailState {
   final String sourceLink;
-
-  SuccessDetailState(this.sourceLink);
+  SuccessDetailState(this.sourceLink,);
 }
 
+class SuccessAudioDetailState extends DetailState {
+  SuccessAudioDetailState();
+}

@@ -1,6 +1,21 @@
+import 'package:flutter/cupertino.dart';
+
 import 'api_request_service.dart';
 import 'data_model.dart';
 import 'my_bloc.dart';
+
+String createMediaLink(String contentType, String nasaId) {
+  if (contentType == 'audio') {
+    return 'http://images-assets.nasa.gov/$contentType/$nasaId/$nasaId~orig.mp3';
+  } else if (contentType == 'video') {
+    return 'http://images-assets.nasa.gov/$contentType/$nasaId/$nasaId~orig.mp4';
+  } else if (contentType == 'image') {
+    return '';
+  } else {
+    debugPrint(contentType);
+    throw Exception('CreateMediaLink error type');
+  }
+}
 
 class Repository {
   final RequestService _requestService;
@@ -11,15 +26,14 @@ class Repository {
     required String nasaId,
   }) async {
     final videoLink = await _requestService.getVideoLink(nasaId: nasaId);
-    String  currentLink = videoLink['collection']['items'][0]['href'];
+    String currentLink = videoLink['collection']['items'][0]['href'];
     return currentLink;
   }
 
-  Future<String> getAudioLink({
-    required String userSearchQuery
-  }) async {
-    final response = await _requestService.getResponse(userRequestQuery: userSearchQuery, contentType: 'audio');
-    String  currentLink = response['collection']['items']['href'][0];
+  Future<String> getAudioLink({required String userSearchQuery}) async {
+    final response = await _requestService.getResponse(
+        userRequestQuery: userSearchQuery, contentType: 'audio');
+    String currentLink = response['collection']['items']['href'][0];
     return currentLink;
   }
 
@@ -42,8 +56,10 @@ class Repository {
           image: item['links'] != null ? item['links'][0]['href'] : '',
           keyWord: (item['data'][0]['keywords'] as List<dynamic>? ?? [])
               .cast<String>(),
-          subTitle: item['data'][0]['description'],
+          subTitle: item['data'][0]['description'] ?? '',
           type: item['data'][0]['media_type'],
+          mediaLink: createMediaLink(
+              item['data'][0]['media_type'], item['data'][0]['nasa_id']),
         ),
       );
     }
