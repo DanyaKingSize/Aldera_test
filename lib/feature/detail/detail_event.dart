@@ -4,12 +4,8 @@ abstract class DetailScreenEvent {
   const DetailScreenEvent();
 }
 
-class GetLinkDetailEvent extends DetailScreenEvent {
-  final String nasaId;
-  GetLinkDetailEvent(this.nasaId);
-
+class GetMediaDetailEvent extends DetailScreenEvent {
+  final String contentType;
+  GetMediaDetailEvent({required this.contentType});
 }
 
-class GetLinkAudioDetailEvent extends DetailScreenEvent {
-  GetLinkAudioDetailEvent();
-}

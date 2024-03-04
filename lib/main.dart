@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:test_app/api_request_service.dart';
+import 'package:test_app/my_grid_view.dart';
 import 'package:test_app/my_list_view.dart';
 import 'package:test_app/repository.dart';
 import 'my_bloc.dart';
 import 'my_button.dart';
-
-
-
 
 void main() {
   MediaKit.ensureInitialized();
@@ -31,9 +29,9 @@ class MyApp extends StatelessWidget {
           create: (context) => Repository(context.read()),
         ),
         BlocProvider(
-          create: (context) => MyBloc(context.read<Repository>())..add(UserRequest()),
+          create: (context) =>
+              MyBloc(context.read<Repository>())..add(UserRequest()),
         ),
-
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -117,24 +115,29 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: BlocBuilder<MyBloc, UserState>(builder: (context, state) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    for (final type in MyContentType.values)
-                      MyButton(
-                        name: type.value,
-                        onTap: () {
-                          context.read<MyBloc>().add(SelectContentType(type));
-                        },
-                        isActive: state.currentContentType == type,
-                      )
-                  ],
-                );
-              }),
+              child: BlocBuilder<MyBloc, UserState>(
+                builder: (context, state) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      for (final type in MyContentType.values)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          child: MyButton(
+                            name: type.value,
+                            onTap: () {
+                              context.read<MyBloc>().add(SelectContentType(type));
+                            },
+                            isActive: state.currentContentType == type,
+                          ),
+                        ),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
           Expanded(
@@ -150,7 +153,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 }
                 if (!state.isLoading) {
-                  return MyListView(data: state.data);
+                  //return MyListView(data: state.data);
+                  return MyGridView(data: state.data);
                 }
                 return const SizedBox.shrink();
               },

@@ -12,11 +12,7 @@ class LoadingDetailState extends DetailState {
   LoadingDetailState();
 }
 
-class SuccessDetailState extends DetailState {
-  final String sourceLink;
-  SuccessDetailState(this.sourceLink,);
-}
-
-class SuccessAudioDetailState extends DetailState {
-  SuccessAudioDetailState();
+class SuccessMediaDetailState extends DetailState {
+  final String contentType;
+  SuccessMediaDetailState({required this.contentType});
 }
