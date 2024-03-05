@@ -130,6 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             name: type.value,
                             onTap: () {
                               context.read<MyBloc>().add(SelectContentType(type));
+                              context.read<MyBloc>().add(UserRequest());
                             },
                             isActive: state.currentContentType == type,
                           ),

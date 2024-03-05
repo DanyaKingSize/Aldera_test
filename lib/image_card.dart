@@ -10,13 +10,13 @@ class ImageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(5),
       height: MediaQuery
           .sizeOf(context)
           .height * 0.3,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: Colors.grey[800],
+        color: Colors.grey[800], // цвет карточки
       ),
       child: Column(
         children: [
@@ -24,7 +24,7 @@ class ImageCard extends StatelessWidget {
             child: data.image.isNotEmpty
                 ? Image.network(
               data.image,
-              fit: BoxFit.contain,
+              fit: BoxFit.cover,
             )
                 : const Center(
               child: Icon(
