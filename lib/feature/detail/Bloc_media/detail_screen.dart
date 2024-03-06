@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/feature/detail/detail_description.dart';
-import '../../data_model.dart';
+import 'package:test_app/feature/detail/Bloc_media/detail_description.dart';
+import '../../../home/data_model.dart';
 
 class DetailScreen extends StatelessWidget {
   final DataModel data;

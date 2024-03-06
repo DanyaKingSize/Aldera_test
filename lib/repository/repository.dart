@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 import 'api_request_service.dart';
-import 'data_model.dart';
-import 'my_bloc.dart';
+import '../home/data_model.dart';
+import '../feature/detail/Bloc_request/my_bloc.dart';
 
 String createMediaLink(String contentType, String nasaId) {
   if (contentType == 'audio') {

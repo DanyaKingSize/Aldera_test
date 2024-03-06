@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:media_kit_video/media_kit_video.dart';
-import 'package:test_app/feature/detail/detail_description.dart';
-import 'data_model.dart';
-import 'feature/detail/detail_bloc.dart';
+import 'package:test_app/feature/detail/Bloc_media/detail_description.dart';
+import '../../../home/data_model.dart';
+import 'detail_bloc.dart';
 //import 'package:audioplayers/audioplayers.dart';
 
 class VideoPlayerScreen extends StatefulWidget {

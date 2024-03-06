@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 
-import '../../repository.dart';
+import '../../../repository/repository.dart';
 
 part 'detail_event.dart';
 

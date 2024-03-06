@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_app/data_model.dart';
-import 'repository.dart';
+import 'package:test_app/home/data_model.dart';
+import '../../../repository/repository.dart';
 
 
 enum MyContentType {

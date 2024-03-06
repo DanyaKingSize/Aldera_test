@@ -2,12 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:media_kit/media_kit.dart';
-import 'package:test_app/api_request_service.dart';
-import 'package:test_app/my_grid_view.dart';
-import 'package:test_app/my_list_view.dart';
-import 'package:test_app/repository.dart';
-import 'my_bloc.dart';
-import 'my_button.dart';
+import 'package:test_app/repository/api_request_service.dart';
+import 'package:test_app/home/my_grid_view.dart';
+import 'package:test_app/home/my_list_view.dart';
+import 'package:test_app/repository/repository.dart';
+import 'feature/detail/Bloc_request/my_bloc.dart';
+import 'home/my_button.dart';
+import 'home/bottom_sheet.dart';
 
 void main() {
   MediaKit.ensureInitialized();
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(31, 31, 31, 1),
+      backgroundColor: const Color.fromRGBO(34, 35, 41, 1),
       appBar: AppBar(
         flexibleSpace: Image.asset(
           'assets/appBar.png',
@@ -134,7 +135,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             },
                             isActive: state.currentContentType == type,
                           ),
+
                         ),
+                      const SizedBox(width: 100, height: 50,
+                      child: MyBottomSheet(),
+                      )
                     ],
                   );
                 },
