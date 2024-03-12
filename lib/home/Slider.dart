@@ -21,27 +21,71 @@ class _MySliderState extends State<MySlider> {
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: Column(
           children: [
-            const Text(
-              'Select the time period to search',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+
+                    width: 134.09,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color.fromRGBO(186, 186, 186, 1),
+                      ),
+                    ),
+                    child:  Center(
+                      child: Text(
+                        'From ${values.start.round()} ',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 10,
+                    height: 2,
+                    color: const Color.fromRGBO(186, 186, 186, 1),
+                  ),
+                  Container(
+                    width: 134.09,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color.fromRGBO(186, 186, 186, 1),
+                      ),
+                    ),
+                    child:  Center(
+                      child: Text(
+                        'From ${values.end.round()}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]
             ),
-            const SizedBox(height: 10,),
-            RangeSlider(
-                values: values,
-                min: 1920,
-                max: 2024,
-                divisions: 124,
-                labels: labels,
-                activeColor: const Color.fromRGBO(29, 54, 127, 1),
-                onChanged: (newValues) {
-                  setState(() => values = newValues);
-                }),
-          ],
+        const SizedBox(
+          height: 10,
         ),
+        RangeSlider(
+            values: values,
+
+            min: 1920,
+            max: 2024,
+            divisions: 124,
+            labels: labels,
+            //activeColor: const Color.fromRGBO(29, 54, 127, 1),
+            activeColor: Colors.yellow,
+            onChanged: (newValues) {
+              setState(() => values = newValues);
+
+            }),
+        ],
       ),
-    );
+    ),);
   }
 }
