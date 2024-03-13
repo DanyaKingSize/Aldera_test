@@ -9,8 +9,6 @@ class DataModel {
   final String mediaLink;
   final List<String>? keyWord;
 
-
-
   DataModel({
     required this.type,
     required this.title,
@@ -21,6 +19,5 @@ class DataModel {
     required this.keyWord,
     required this.subTitle,
     required this.mediaLink,
-
   });
 }

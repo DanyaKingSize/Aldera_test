@@ -8,7 +8,7 @@ import 'package:test_app/home/my_list_view.dart';
 import 'package:test_app/repository/repository.dart';
 import 'feature/detail/Bloc_request/my_bloc.dart';
 import 'home/my_button.dart';
-import 'home/bottom_sheet.dart';
+import 'home/filters/bottom_sheet.dart';
 
 void main() {
   MediaKit.ensureInitialized();
@@ -130,15 +130,18 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: MyButton(
                             name: type.value,
                             onTap: () {
-                              context.read<MyBloc>().add(SelectContentType(type));
+                              context
+                                  .read<MyBloc>()
+                                  .add(SelectContentType(type));
                               context.read<MyBloc>().add(UserRequest());
                             },
                             isActive: state.currentContentType == type,
                           ),
-
                         ),
-                      const SizedBox(width: 100, height: 50,
-                      child: MyBottomSheet(),
+                      const SizedBox(
+                        width: 100,
+                        height: 50,
+                        child: MyBottomSheet(),
                       )
                     ],
                   );

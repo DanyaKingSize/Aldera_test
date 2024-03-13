@@ -11,9 +11,7 @@ class ImageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(5),
-      height: MediaQuery
-          .sizeOf(context)
-          .height * 0.3,
+      height: MediaQuery.sizeOf(context).height * 0.3,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: Colors.grey[800], // цвет карточки
@@ -23,16 +21,16 @@ class ImageCard extends StatelessWidget {
           Expanded(
             child: data.image.isNotEmpty
                 ? Image.network(
-              data.image,
-              fit: BoxFit.cover,
-            )
+                    data.image,
+                    fit: BoxFit.cover,
+                  )
                 : const Center(
-              child: Icon(
-                Icons.headphones,
-                size: 50,
-                color: Colors.amberAccent,
-              ),
-            ),
+                    child: Icon(
+                      Icons.headphones,
+                      size: 50,
+                      color: Colors.amberAccent,
+                    ),
+                  ),
           ),
           const SizedBox(
             height: 10,
@@ -48,5 +46,4 @@ class ImageCard extends StatelessWidget {
       ),
     );
   }
-
 }

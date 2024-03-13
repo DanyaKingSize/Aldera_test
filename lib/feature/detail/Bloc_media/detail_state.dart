@@ -14,5 +14,6 @@ class LoadingDetailState extends DetailState {
 
 class SuccessMediaDetailState extends DetailState {
   final String contentType;
+
   SuccessMediaDetailState({required this.contentType});
 }

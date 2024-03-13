@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:test_app/home/Slider.dart';
+import 'package:test_app/home/filters/slider.dart';
 
 class MyBottomSheet extends StatelessWidget {
   const MyBottomSheet({super.key});

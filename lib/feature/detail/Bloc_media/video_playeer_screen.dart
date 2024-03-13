@@ -5,7 +5,6 @@ import 'package:media_kit_video/media_kit_video.dart';
 import 'package:test_app/feature/detail/Bloc_media/detail_description.dart';
 import '../../../home/data_model.dart';
 import 'detail_bloc.dart';
-//import 'package:audioplayers/audioplayers.dart';
 
 class VideoPlayerScreen extends StatefulWidget {
   final DataModel data;
@@ -19,7 +18,6 @@ class VideoPlayerScreen extends StatefulWidget {
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   late final controller = VideoController(videoPlayer);
   late final videoPlayer = Player();
-  //late final audioPlayer = AudioPlayer();
 
   @override
   void initState() {
@@ -41,8 +39,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
             case 'video':
               videoPlayer.open(Media(widget.data.mediaLink));
             case 'audio':
-              //audioPlayer.play(UrlSource(widget.data.mediaLink));
-            videoPlayer.open(Media(widget.data.mediaLink));
+              videoPlayer.open(Media(widget.data.mediaLink));
             default:
               throw Exception('Error type in Media Player');
           }
