@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../../home/data_model.dart';
+
 
 class DetailDescription extends StatelessWidget {
   final DataModel data;
@@ -61,6 +61,10 @@ class DetailDescription extends StatelessWidget {
           style: const TextStyle(
             color: Colors.yellow,
             fontSize: 15,
+              decoration: TextDecoration.underline,
+              decorationStyle: TextDecorationStyle.solid,
+              decorationColor: Colors.blue,
+              decorationThickness: 3,
           ),
         ),
         const SizedBox(height: 15),
@@ -76,6 +80,10 @@ class DetailDescription extends StatelessWidget {
           style: const TextStyle(
             color: Colors.yellow,
             fontSize: 15,
+            decoration: TextDecoration.underline,
+            decorationStyle: TextDecorationStyle.solid,
+            decorationColor: Colors.blue,
+            decorationThickness: 3,
           ),
         ),
         const SizedBox(height: 15),
@@ -91,10 +99,14 @@ class DetailDescription extends StatelessWidget {
           style: const TextStyle(
             color: Colors.yellow,
             fontSize: 15,
+            decoration: TextDecoration.underline,
+            decorationStyle: TextDecorationStyle.solid,
+            decorationColor: Colors.blue,
+            decorationThickness: 3,
           ),
-        ),
+        ) ,
         const SizedBox(
-          height: 30,
+          height: 30, //fixme useless comma
         ),
       ],
     );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:media_kit_video/media_kit_video.dart';
-import 'package:test_app/feature/detail/Bloc_media/detail_description.dart';
+import 'package:test_app/feature/detail/bloc_media/detail_description.dart';
 import '../../../home/data_model.dart';
 import 'detail_bloc.dart';
 
@@ -16,8 +16,8 @@ class VideoPlayerScreen extends StatefulWidget {
 }
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
-  late final controller = VideoController(videoPlayer);
-  late final videoPlayer = Player();
+  late final controller = VideoController(videoPlayer);// fixme move initialization to initState
+  late final videoPlayer = Player();// fixme move initialization to initState
 
   @override
   void initState() {
@@ -35,7 +35,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     return BlocConsumer<DetailBloc, DetailState>(
       listener: (context, state) {
         if (state is SuccessMediaDetailState) {
-          switch (state.contentType) {
+          switch (state.contentType) {// fixme need enum
             case 'video':
               videoPlayer.open(Media(widget.data.mediaLink));
             case 'audio':
@@ -67,7 +67,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                         child: SizedBox(
                           width: MediaQuery.of(context).size.width,
                           height:
-                              MediaQuery.of(context).size.width * 8.0 / 16.0,
+                              MediaQuery.of(context).size.width*0.5 ,
                           child: BlocBuilder<DetailBloc, DetailState>(
                             builder: (context, state) {
                               return Video(
@@ -78,8 +78,6 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 15),
-                    const SizedBox(height: 15),
                     DetailDescription(data: widget.data),
                   ],
                 ),

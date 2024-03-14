@@ -1,16 +1,22 @@
 part of 'my_bloc.dart';
 
+
 class UserState extends Equatable {
   final List<DataModel> data;
   final bool isLoading;
   final MyContentType currentContentType;
   final String userSearchQuery;
 
-  const UserState(
-      {required this.data,
-      required this.isLoading,
-      required this.currentContentType,
-      required this.userSearchQuery});
+
+
+  const UserState({
+    required this.data,
+    required this.isLoading,
+    required this.currentContentType,
+    required this.userSearchQuery
+
+
+  });
 
   UserState copyWith({
     List<DataModel>? data,
@@ -22,7 +28,9 @@ class UserState extends Equatable {
         data: data ?? this.data,
         isLoading: isLoading ?? this.isLoading,
         currentContentType: currentContentType ?? this.currentContentType,
-        userSearchQuery: userSearchQuery ?? this.userSearchQuery);
+        userSearchQuery: userSearchQuery ?? this.userSearchQuery
+
+    );
   }
 
   @override

@@ -25,13 +25,13 @@ class MyGridView extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
+                  MaterialPageRoute( // fixme move to DetailScreen and VideoPlayerScreen
                     builder: (context) {
-                      if (data[index].type == 'image') {
+                      if (data[index].type == 'image') {// fixme rework to enum -> if (data.type == DataType.image)...
                         return DetailScreen(data[index]);
                       } else if (data[index].type == 'video' ||
                           data[index].type == 'audio') {
-                        return BlocProvider(
+                        return BlocProvider( // fixme move to DetailScreen and VideoPlayerScreen (inside)
                             create: (context) => DetailBloc()
                               ..add(
                                 GetMediaDetailEvent(
@@ -49,6 +49,6 @@ class MyGridView extends StatelessWidget {
               child: ImageCard(data: data[index]),
             ),
           );
-        });
+        });// fixme comma
   }
 }

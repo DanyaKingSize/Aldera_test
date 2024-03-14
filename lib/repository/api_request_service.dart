@@ -8,19 +8,19 @@ class RequestService {
 
   String buildUrlSearch(String userRequest, String contentType) {
     debugPrint(contentType);
-    return 'https://images-api.nasa.gov/search?q=$userRequest&media_type=$contentType';
+    return 'https://images-api.nasa.gov/search?q=$userRequest&media_type=$contentType'; // fixme base url to constant
   }
 
   String buildUrlVideoLink(
     String nasaId,
   ) {
-    return 'https://images-api.nasa.gov/asset/$nasaId';
+    return 'https://images-api.nasa.gov/asset/$nasaId';// fixme base url to constant
   }
 
   String buildUrlAudioLink(
       String nasaId,
       ) {
-    return 'https://images-api.nasa.gov/asset/$nasaId';
+    return 'https://images-api.nasa.gov/asset/$nasaId';// fixme base url to constant
   }
 
   Future<Map<String, dynamic>> getResponse(

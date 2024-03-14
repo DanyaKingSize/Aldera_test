@@ -21,28 +21,37 @@ class MyBloc extends Bloc<UserEvent, UserState> {
   final Repository repository;
 
   MyBloc(this.repository)
-      : super(const UserState(
-          data: [],
-          isLoading: false,
-          currentContentType: MyContentType.image,
-          userSearchQuery: '',
-        )) {
-    on<UserRequest>((event, emit) async {
-      emit(state.copyWith(isLoading: true));
-      String request = '';
-      if (event.request == '') {
-        request = state.userSearchQuery;
-      } else {
-        request = event.request;
-      }
+      : super(
+          const UserState(
+            data: [],
+            isLoading: false,
+            currentContentType: MyContentType.image,
+            userSearchQuery: '',
+          ),
+        ) {
+    //fixme comma+
+    on<UserRequest>(
+      (event, emit) async {
+        //fixme move to sepatated function
+        emit(state.copyWith(isLoading: true));
+        String request = '';
+        if (event.request == '') {
+          request = state.userSearchQuery;
+        } else {
+          request = event
+              .request; //fixme move in base variable init (request = event.query -> if(request.isEmpty...)
+        }
 
-      var response = await repository.getResponse(
-        userSearchQuery: request,
-        contentType: state.currentContentType,
-      );
-      emit(state.copyWith(
-          data: response, isLoading: false, userSearchQuery: event.request));
-    });
+        var response = await repository.getResponse(
+          userSearchQuery: request,
+          contentType: state.currentContentType,
+        );
+        emit(
+          state.copyWith(
+              data: response, isLoading: false, userSearchQuery: event.request),
+        ); //fixme comma
+      },
+    );
     on<SelectContentType>((event, emit) {
       emit(
         state.copyWith(

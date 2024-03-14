@@ -2,13 +2,13 @@ import 'package:flutter/cupertino.dart';
 
 import 'api_request_service.dart';
 import '../home/data_model.dart';
-import '../feature/detail/Bloc_request/my_bloc.dart';
+import '../feature/detail/bloc_request/my_bloc.dart';
 
 String createMediaLink(String contentType, String nasaId) {
-  if (contentType == 'audio') {
-    return 'http://images-assets.nasa.gov/$contentType/$nasaId/$nasaId~orig.mp3';
+  if (contentType == 'audio') {// fixme enum + switch
+    return 'http://images-assets.nasa.gov/$contentType/$nasaId/$nasaId~orig.mp3';// fixme base url to constant
   } else if (contentType == 'video') {
-    return 'http://images-assets.nasa.gov/$contentType/$nasaId/$nasaId~orig.mp4';
+    return 'http://images-assets.nasa.gov/$contentType/$nasaId/$nasaId~orig.mp4';// fixme base url to constant
   } else if (contentType == 'image') {
     return '';
   } else {

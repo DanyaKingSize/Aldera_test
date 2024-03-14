@@ -6,9 +6,9 @@ import 'package:test_app/repository/api_request_service.dart';
 import 'package:test_app/home/my_grid_view.dart';
 import 'package:test_app/home/my_list_view.dart';
 import 'package:test_app/repository/repository.dart';
-import 'feature/detail/Bloc_request/my_bloc.dart';
+import 'feature/detail/bloc_request/my_bloc.dart';
 import 'home/my_button.dart';
-import 'home/filters/bottom_sheet.dart';
+import 'home/filters/FilterBottom.dart';
 
 void main() {
   MediaKit.ensureInitialized();
@@ -141,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       const SizedBox(
                         width: 100,
                         height: 50,
-                        child: MyBottomSheet(),
+                        child: FilterButton(),
                       )
                     ],
                   );
@@ -161,11 +161,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   );
                 }
-                if (!state.isLoading) {
+                if (!state.isLoading) { //fixme maybe 'else'?
                   //return MyListView(data: state.data);
                   return MyGridView(data: state.data);
                 }
-                return const SizedBox.shrink();
+                return const SizedBox.shrink();// fixme never be called -> useless -> delete
               },
             ),
           ),

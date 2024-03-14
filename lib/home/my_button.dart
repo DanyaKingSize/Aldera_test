@@ -9,7 +9,7 @@ class MyButton extends StatelessWidget {
       {super.key,
       required this.name,
       required this.onTap,
-      required this.isActive});
+      required this.isActive});// fixme comma
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class MyButton extends StatelessWidget {
           children: <Widget>[
             isActive ?
               const Icon(
-                Icons.check_rounded,
+                Icons.check_rounded,// fixme to getter 'Icon get getIcon =>...'
                 color: Colors.green,
               ) : const Icon(
                 Icons.close,
@@ -42,7 +42,7 @@ class MyButton extends StatelessWidget {
                     color: Colors.deepPurple,
                     fontSize: 15,
                   ),
-                )),
+                )),//fixme comma
           ],
         ),
       ),

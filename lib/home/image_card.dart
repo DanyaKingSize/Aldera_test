@@ -32,9 +32,7 @@ class ImageCard extends StatelessWidget {
                     ),
                   ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          // fixme useless comma+
           Text(
             data.title,
             overflow: TextOverflow.ellipsis,
